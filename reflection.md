@@ -3,7 +3,10 @@
 ## 1. System Design
 
 **a. Initial design**
-
+I designed four classes for PawPal+. The Task class holds one activity like a walk or feeding, with a time, duration, priority, and frequency.
+ The Pet class stores a pet's name and breed and holds a list of tasks. The Owner class stores the owner's name and manages multiple pets. 
+ The Scheduler class is the brain as it takes the owner's data and organizes all tasks by sorting, filtering, and detecting conflicts.
+ 
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
