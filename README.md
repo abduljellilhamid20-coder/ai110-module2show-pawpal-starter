@@ -44,14 +44,24 @@ pip install -r requirements.txt
 
 ## 🖥️ Sample Output
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
-
 ```
-# e.g.:
-# Daily plan for Biscuit (Golden Retriever):
-#   08:00 — Morning walk (30 min) [priority: high]
-#   09:00 — Feeding (10 min) [priority: high]
-#   ...
+📅 Today's Schedule for Abduljellil:
+=============================================
+⬜ 08:00 — Morning walk (Biscuit) [high] 30min
+⬜ 08:00 — Feeding (Whiskers) [high] 10min
+⬜ 09:00 — Feeding (Biscuit) [high] 10min
+⬜ 12:00 — Medication (Whiskers) [high] 5min
+⬜ 18:00 — Evening walk (Biscuit) [medium] 30min
+
+⚠️  Conflict Check:
+=============================================
+⚠️ Conflict at 08:00: 'Feeding' (Whiskers) conflicts with 'Morning walk' (Biscuit)
+
+🐕 Biscuit's Tasks Only:
+=============================================
+  08:00 — Morning walk
+  09:00 — Feeding
+  18:00 — Evening walk
 ```
 
 ## 🧪 Testing PawPal+
@@ -67,7 +77,16 @@ pytest --cov
 Sample test output:
 
 ```
-# Paste your pytest output here
+platform darwin -- Python 3.9.12, pytest-8.4.2
+collected 5 items
+
+tests/test_pawpal.py::test_task_completion PASSED        [ 20%]
+tests/test_pawpal.py::test_add_task_increases_count PASSED [ 40%]
+tests/test_pawpal.py::test_sort_by_time PASSED           [ 60%]
+tests/test_pawpal.py::test_conflict_detection PASSED     [ 80%]
+tests/test_pawpal.py::test_recurring_task PASSED         [100%]
+
+5 passed in 0.02s
 ```
 
 ## 📐 Smarter Scheduling
@@ -76,19 +95,19 @@ Sample test output:
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting |       Scheduler.sort_by_time() |     puts tasks in order from earliest to latest |
+| Filtering |      Scheduler.filter_tasks() | lets you see tasks for one pet or only unfinished ones |
+| Conflict handling | Scheduler.detect_conflicts() |      gives a warning if two tasks are at the same time |
+| Recurring tasks | Task.reschedule() |      automatically creates the next task when a daily one is done |
 
 ## 📸 Demo Walkthrough
 
 Describe your app in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User enters their name and adds a pet with a name and breed
+2. User adds tasks to their pet like a morning walk at 08:00 or feeding at 09:00
+3. The scheduler sorts all tasks by time and shows today's full schedule
+4. If two tasks are at the same time, the app shows a conflict warning
+5. When a daily task is marked complete, a new one is automatically created for the next day
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
